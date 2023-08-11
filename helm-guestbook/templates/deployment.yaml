@@ -19,8 +19,6 @@ spec:
       labels:
         app: {{ template "helm-guestbook.name" . }}
         release: {{ .Release.Name }}
-        imageTag: "{{ .Values.image.tag }}"
-        imageRepo: "{{ .Values.image.repository }}"
       annotations:
         notifications.argoproj.io/subscribe.on-deployed.slack: "#tmp-qe-journey-tests-runner-alerts"
         notifications.argoproj.io/subscribe.on-sync-running.slack: "#tmp-qe-journey-tests-runner-alerts"
