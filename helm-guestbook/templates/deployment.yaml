@@ -19,7 +19,9 @@ spec:
       labels:
         app: {{ template "helm-guestbook.name" . }}
         release: {{ .Release.Name }}
+        kaluza-test-label/image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
       annotations:
+        kaluza-test-annotation/image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         notifications.argoproj.io/subscribe.on-deployed.slack: "#tmp-qe-journey-tests-runner-alerts"
         notifications.argoproj.io/subscribe.on-sync-running.slack: "#tmp-qe-journey-tests-runner-alerts"
     spec:
