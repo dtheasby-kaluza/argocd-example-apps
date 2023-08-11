@@ -19,6 +19,12 @@ spec:
       labels:
         app: {{ template "helm-guestbook.name" . }}
         release: {{ .Release.Name }}
+        image:
+          tag: {{ .Values.image.tag }}
+          repo: {{ .Value.image.repository }}
+      annotations:
+        notifications.argoproj.io/subscribe.on-deployed.slack: "#tmp-qe-journey-tests-runner-alerts"
+        notifications.argoproj.io/subscribe.on-sync-running.slack: "#tmp-qe-journey-tests-runner-alerts"
     spec:
       containers:
         - name: {{ .Chart.Name }}
